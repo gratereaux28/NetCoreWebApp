@@ -1,4 +1,5 @@
 using FluentValidation.AspNetCore;
+using Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,8 +37,11 @@ namespace Web
                 options.LoginPath = new PathString("/Account/Login");
                 options.AccessDeniedPath = new PathString("/NoAutorizado");
             });
+
+            services.AddDbContexts(Configuration);
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            //services.AddFluentValidation(options => { options.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()); });
+            services.AddFluentValidation(options => { options.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()); });
 
             services.AddControllersWithViews();
 
