@@ -8,14 +8,19 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Core.Interfaces;
+using Core.Models;
 
 namespace NetCoreWebApp.Web.Controllers
 {
     [AllowAnonymous]
     public class AccountController : BaseController
     {
-        public AccountController() : base()
+        private readonly IUserService _userService;
+
+        public AccountController(IUserService userService) : base()
         {
+            _userService = userService;
         }
 
         public IActionResult Index()
@@ -47,7 +52,9 @@ namespace NetCoreWebApp.Web.Controllers
                     return View("Login", model);
                 }
 
-                if (model.UserName == "martin" && model.Password == "123")
+                User user = await _userService.GetUser(model.UserName);
+
+                if (user != null && user.Password == model.Password)
                 {
                     var ident = new List<Claim>
                     {
@@ -75,7 +82,7 @@ namespace NetCoreWebApp.Web.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Se ha presentado un error al cargar el Acuerdo de Usuario.");
+                    ModelState.AddModelError(string.Empty, "Usuario o Contraseña inválido");
                     return View("Login", model);
                 }
 
@@ -85,6 +92,17 @@ namespace NetCoreWebApp.Web.Controllers
                 ModelState.AddModelError(string.Empty, "Usuario o Contraseña inválido");
                 return View("Login", model);
             }
+        }
+
+        /// <summary>
+        /// Cierra la sesión actual del usuario.
+        /// </summary>
+        /// <returns>Vista principal.</returns>
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Login");
         }
     }
 }

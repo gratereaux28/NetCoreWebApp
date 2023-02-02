@@ -1,4 +1,5 @@
-﻿using Infrastructure.Extensions;
+﻿using Core.Interfaces;
+using Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

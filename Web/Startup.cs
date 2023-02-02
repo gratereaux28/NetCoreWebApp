@@ -39,6 +39,7 @@ namespace Web
             });
 
             services.AddDbContexts(Configuration);
+            services.AddServices();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddFluentValidation(options => { options.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()); });
