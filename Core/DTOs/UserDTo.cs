@@ -4,7 +4,7 @@
 
 namespace Core.DTOs
 {
-    public partial class UserDTo
+    public partial class UserDTO
     {
         public string Username { get; set; }
         public string Password { get; set; }

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NetCoreWebApp.Infrastructure.Implementations;
+using Infrastructure.Implementations;
 using NetCoreWebApp.Web.Models;
 using System;
 using System.Collections.Generic;

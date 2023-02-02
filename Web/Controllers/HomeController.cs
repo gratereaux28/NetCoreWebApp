@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using NetCoreWebApp.Infrastructure.Implementations;
+using Infrastructure.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Security.Claims;
 
-namespace NetCoreWebApp.Infrastructure.Implementations
+namespace Infrastructure.Implementations
 {
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class BaseController : Controller
