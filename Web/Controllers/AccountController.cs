@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NetCoreWebApp.Infrastructure.Implementations;
 using NetCoreWebApp.Web.Models;
 using System;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace NetCoreWebApp.Web.Controllers
@@ -46,6 +49,25 @@ namespace NetCoreWebApp.Web.Controllers
 
                 if (model.UserName == "martin" && model.Password == "123")
                 {
+                    var ident = new List<Claim>
+                    {
+                        // adding following 2 claim just for supporting default antiforgery provider
+                        new Claim(ClaimTypes.NameIdentifier, "martin"),
+                        new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider", "ASP.NET Identity", "http://www.w3.org/2001/XMLSchema#string"),
+                    };
+
+                    var claimsIdentity = new ClaimsIdentity(ident, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    var authProperties = new AuthenticationProperties
+                    {
+                        IsPersistent = true,
+                        ExpiresUtc = DateTime.UtcNow.AddMinutes(2440)
+                    };
+
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                          new ClaimsPrincipal(claimsIdentity),
+                          authProperties);
+
                     if (string.IsNullOrEmpty(ReturnUrl))
                         return RedirectToAction("Index", "Home");
                     else
