@@ -9,6 +9,7 @@ namespace Core.Interfaces
     {
         Task<OrderDetails> GetDetail(Guid id);
         Task<IEnumerable<OrderDetails>> GetDetails();
+        Task<IEnumerable<OrderDetails>> GetDetailsByOrderId(Guid orderId);
         Task<OrderDetails> InsertDetail(OrderDetails detail);
         Task<OrderDetails> UpdateDetail(OrderDetails detail);
         Task DeleteDetail(Guid Id);

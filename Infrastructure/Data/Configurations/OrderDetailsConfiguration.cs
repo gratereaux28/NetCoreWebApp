@@ -25,7 +25,7 @@ namespace Infrastructure.Data.Configurations
             builder.HasOne(d => d.Order)
                 .WithMany(p => p.OrderDetails)
                 .HasForeignKey(d => d.OrderId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_orderdetails_orders");
 
             builder.HasOne(d => d.Product)

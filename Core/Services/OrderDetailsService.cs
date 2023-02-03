@@ -29,6 +29,12 @@ namespace Core.Services
             return result;
         }
 
+        public async Task<IEnumerable<OrderDetails>> GetDetailsByOrderId(Guid orderId)
+        {
+            var result = await _unitOfWork.OrderDetailsRepository.GetAsync(o => o.OrderId == orderId);
+            return result;
+        }
+
         public async Task<OrderDetails> InsertDetail(OrderDetails detail)
         {
             await _unitOfWork.OrderDetailsRepository.AddAsync(detail);

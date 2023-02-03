@@ -79,8 +79,16 @@ namespace Web.Controllers
             if (orderDTO.stringDetalle != null)
             {
                 var detalles = JsonConvert.DeserializeObject<List<OrderDetails>>(orderDTO.stringDetalle);
+                foreach (var item in detalles)
+                {
+                    if(item.Id == Guid.Empty)
+                    {
+                        item.Id = Guid.NewGuid();
+                    }
+                }
                 order.OrderDetails = detalles;
                 orderDTO.OrderDetails = _mapper.Map<List<OrderDetailsDTO>>(detalles);
+
             }
             else
                 order.OrderDetails = new List<OrderDetails>();

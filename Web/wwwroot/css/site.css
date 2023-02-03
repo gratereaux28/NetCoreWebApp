@@ -141,3 +141,7 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
     }
+
+.SwalcustomClass {
+    z-index: 999999999999999999999999;
+}

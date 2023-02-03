@@ -1,5 +1,5 @@
 ﻿async function onEditarRow(s) {
-    var RowIndex = s.row.rowIndex;
+    let RowIndex = s.row.rowIndex;
     s.component.editRow(RowIndex);
 };
 
@@ -13,6 +13,7 @@ async function onEliminarRow(s) {
         cancelButtonColor: '#3085d6',
         confirmButtonText: 'Eliminar',
         cancelButtonText: 'Cancelar',
+        customClass: 'SwalcustomClass',
     }).then((result) => {
         if (result.isConfirmed) {
             s.component.deleteRow(s.row.rowIndex);

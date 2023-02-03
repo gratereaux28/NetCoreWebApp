@@ -64,6 +64,7 @@
                     onBeforeSend(method, ajaxOptions) {
                         ajaxOptions.xhrFields = { withCredentials: true };
                     },
+                    loadMode: 'raw',
                 }),
                 valueExpr: 'Id',
                 displayExpr: 'Name',

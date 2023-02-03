@@ -29,6 +29,18 @@ namespace Web.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Get(Guid id)
+        {
+            var product = await _productsService.GetProduct(id);
+            var map = _mapper.Map<ProductsDTO>(product);
+            string result = JsonConvert.SerializeObject(map, Formatting.Indented, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+            return Ok(result);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var products = await _productsService.GetProducts();
