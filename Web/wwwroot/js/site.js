@@ -1,6 +1,21 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿async function onEditarRow(s) {
+    var RowIndex = s.row.rowIndex;
+    s.component.editRow(RowIndex);
+};
 
-// Write your JavaScript code.
-
-/* globals Chart:false, feather:false */
+async function onEliminarRow(s) {
+    Swal.fire({
+        title: 'Eliminar',
+        text: `¿Está seguro que desea eleminar este registro?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Eliminar',
+        cancelButtonText: 'Cancelar',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            s.component.deleteRow(s.row.rowIndex);
+        }
+    })
+};

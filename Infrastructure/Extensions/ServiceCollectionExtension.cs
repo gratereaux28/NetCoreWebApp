@@ -20,6 +20,7 @@ namespace Infrastructure.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IUserService, UserService>();
             return services;
         }

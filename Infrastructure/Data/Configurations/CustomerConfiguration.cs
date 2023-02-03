@@ -16,7 +16,7 @@ namespace Infrastructure.Data.Configurations
 
             builder.Property(e => e.City)
                 .IsRequired()
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("city");
 
@@ -38,15 +38,19 @@ namespace Infrastructure.Data.Configurations
                 .IsUnicode(false)
                 .HasColumnName("country");
 
-            builder.Property(e => e.Customer1)
+            builder.Property(e => e.customer)
                 .IsRequired()
                 .HasMaxLength(500)
                 .IsUnicode(false)
                 .HasColumnName("customer");
 
-            builder.Property(e => e.Date)
+            builder.Property(e => e.CreateAt)
                 .HasColumnType("datetime")
-                .HasColumnName("date");
+                .HasColumnName("createAt");
+
+            builder.Property(e => e.ModifiedAt)
+                .HasColumnType("datetime")
+                .HasColumnName("modifiedAt");
 
             builder.Property(e => e.Status).HasColumnName("status");
         }

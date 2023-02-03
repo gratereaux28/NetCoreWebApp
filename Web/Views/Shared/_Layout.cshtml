@@ -19,10 +19,16 @@
     <link rel="icon" href="~/img/favicons/favicon.ico">
     <meta name="theme-color" content="#712cf9">
 
+
+    <script src="~/js/jquery-3.6.3.min.js"></script>
+    <script src="~/js/sweetalert2-11.js"></script>
+
     <!-- Custom styles for this template -->
     <link href="~/css/site.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/22.2.4/css/dx.light.css">
+    @*<link href="~/css/dx.light.compact.css" rel="stylesheet">*@
 </head>
-<body>
+<body class="dx-viewport">
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Company name</a>
@@ -61,7 +67,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="~/Customer">
                                 <span data-feather="users" class="align-text-bottom"></span>
                                 Customers
                             </a>
@@ -84,6 +90,10 @@
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">@ViewBag.Title</h1>
+                </div>
+
                 @RenderBody()
             </main>
         </div>
@@ -92,6 +102,12 @@
 
     <script src="~/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/feather.min.js"></script>
+    <script src="~/js/Chart.min.js"></script>
+    @*<script src="~/js/dx.all.js"></script>*@
+    <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/22.2.4/js/dx.all.js"></script>
+    <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/22.2.4/js/dx.aspnet.data.js"></script>
+
+    @*<script src="~/js/dx.aspnet.data.js"></script>*@
     <script src="~/js/site.js"></script>
 </body>
 </html>
