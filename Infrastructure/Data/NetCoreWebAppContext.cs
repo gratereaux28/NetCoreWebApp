@@ -24,6 +24,8 @@ namespace Infrastructure.Data
         public IConfiguration Configuration { get; }
 
         public virtual DbSet<Customers> Customers { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
+        public virtual DbSet<OrderDetails> OrderDetails { get; set; }
         public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<ProductCategories> ProductCategories { get; set; }
         public virtual DbSet<Users> Users { get; set; }

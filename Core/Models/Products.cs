@@ -7,6 +7,11 @@ namespace Core.Models
 {
     public partial class Products
     {
+        public Products()
+        {
+            OrderDetails = new HashSet<OrderDetails>();
+        }
+
         public Guid Id { get; set; }
         public string Sku { get; set; }
         public string Name { get; set; }
@@ -21,5 +26,6 @@ namespace Core.Models
         public DateTime? ModifiedAt { get; set; }
 
         public virtual ProductCategories Category { get; set; }
+        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
     }
 }
