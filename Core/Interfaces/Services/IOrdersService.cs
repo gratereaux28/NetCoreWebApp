@@ -7,7 +7,7 @@ namespace Core.Interfaces
 {
     public interface IOrdersService
     {
-        Task<Orders> GetOrders(Guid id);
+        Task<Orders> GetOrder(Guid id);
         Task<IEnumerable<Orders>> GetOrders();
         Task<Orders> InsertOrders(Orders order);
         Task<Orders> UpdateOrders(Orders order);

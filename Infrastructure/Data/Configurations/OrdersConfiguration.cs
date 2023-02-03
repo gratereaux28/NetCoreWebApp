@@ -52,12 +52,6 @@ namespace Infrastructure.Data.Configurations
                 .IsUnicode(false)
                 .HasColumnName("shipAddress2");
 
-            builder.Property(e => e.ShipName)
-                .IsRequired()
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("shipName");
-
             builder.Property(e => e.Shipped).HasColumnName("shipped");
 
             builder.Property(e => e.State)

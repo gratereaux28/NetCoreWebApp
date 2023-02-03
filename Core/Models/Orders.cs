@@ -14,7 +14,6 @@ namespace Core.Models
 
         public Guid Id { get; set; }
         public Guid CustomerId { get; set; }
-        public string ShipName { get; set; }
         public string ShipAddress { get; set; }
         public string ShipAddress2 { get; set; }
         public string City { get; set; }

@@ -16,7 +16,7 @@ namespace Core.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Orders> GetOrders(Guid id)
+        public async Task<Orders> GetOrder(Guid id)
         {
             var result = await _unitOfWork.OrdersRepository.AddInclude("Customer").AddInclude("OrderDetails").GetAsync(p => p.Id == id);
             return result.FirstOrDefault();
@@ -24,7 +24,7 @@ namespace Core.Services
 
         public async Task<IEnumerable<Orders>> GetOrders()
         {
-            var result = await _unitOfWork.OrdersRepository.ListAllAsync();
+            var result = await _unitOfWork.OrdersRepository.AddInclude("OrderDetails").ListAllAsync();
             return result;
         }
 
@@ -42,7 +42,7 @@ namespace Core.Services
 
         public async Task DeleteOrders(Guid Id)
         {
-            Orders order = await GetOrders(Id);
+            Orders order = await GetOrder(Id);
             await _unitOfWork.OrdersRepository.DeleteAsync(order);
         }
     }

@@ -192,7 +192,8 @@
                             height: 100,
                         },
                     },
-                    'Image', 'CategoryId', 'Stock', 'Location']
+                    'Image', 'CategoryId', 'Stock', 'Location'
+                ]
             },
         },
         grouping: {

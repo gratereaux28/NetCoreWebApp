@@ -60,6 +60,7 @@
         }, {
             dataField: 'Status',
             caption: 'Estado',
+            dataType: 'boolean',
         },
         {
             type: "buttons",
