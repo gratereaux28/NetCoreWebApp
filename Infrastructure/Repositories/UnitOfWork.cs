@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Implementations
 {
+    // This class contains all the repositories that dosent have a especific workflow, with BaseRepository we can share all similar setting to all repositories
     public class UnitOfWork : IUnitOfWork
     {
         private readonly NetCoreWebAppContext _context;

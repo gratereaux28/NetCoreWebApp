@@ -8,11 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Web.Controllers
 {
+    /// <summary>
+    /// This controller make all configuration and contains all the method to work with the orders
+    /// </summary>
     public class OrdersController : BaseController
     {
         private readonly IMapper _mapper;
@@ -24,15 +26,23 @@ namespace Web.Controllers
             _ordersService = ordersService;
         }
 
+        /// <summary>
+        /// This method get the initial view
+        /// </summary>
         public IActionResult Index()
         {
             return View();
         }
 
+        /// <summary>
+        /// This method get all orders in database
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var customers = await _ordersService.GetOrders();
+
+            //Here we are mapping the original model into a dto to hidden the original mode
             var map = _mapper.Map<IEnumerable<OrdersDTO>>(customers);
             string result = JsonConvert.SerializeObject(map, Formatting.Indented, new JsonSerializerSettings
             {
@@ -41,6 +51,10 @@ namespace Web.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// This method insert a new oder
+        /// </summary>
+        /// <param name="values">Contains all change in json format</param>
         [HttpPost]
         public async Task<IActionResult> Post(string values)
         {
@@ -52,6 +66,7 @@ namespace Web.Controllers
             order.Id= Guid.NewGuid();
             order.Date = DateTime.Now;
 
+            //Here we transform all details because we send all details in json format
             if (orderDTO.stringDetalle != null)
             {
                 var detalles = JsonConvert.DeserializeObject<List<OrderDetails>>(orderDTO.stringDetalle);
@@ -68,6 +83,11 @@ namespace Web.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// This method update a existing oder
+        /// </summary>
+        /// <param name="values">Contains all change in json format</param>
+        /// <param name="key">Contains the key of the order</param>
         [HttpPut]
         public async Task<IActionResult> Put(string values, Guid key)
         {
@@ -76,11 +96,13 @@ namespace Web.Controllers
             JsonConvert.PopulateObject(values, order);
             JsonConvert.PopulateObject(values, orderDTO);
 
+            //Here we transform all details because we send all details in json format
             if (orderDTO.stringDetalle != null)
             {
                 var detalles = JsonConvert.DeserializeObject<List<OrderDetails>>(orderDTO.stringDetalle);
                 foreach (var item in detalles)
                 {
+                    //Here we add a nre guid because front end send to server an empty id
                     if(item.Id == Guid.Empty)
                     {
                         item.Id = Guid.NewGuid();
@@ -100,6 +122,10 @@ namespace Web.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// This method delete a existing oder with his all dependency
+        /// </summary>
+        /// <param name="key">Contains the key of the order</param>
         [HttpDelete]
         public async Task<IActionResult> Delete(Guid key)
         {

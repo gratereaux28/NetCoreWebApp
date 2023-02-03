@@ -4,6 +4,7 @@ using Core.Models;
 
 namespace Infrastructure.Mappings
 {
+    // In this class wee use AutoMapper to create a map between some models
     public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
