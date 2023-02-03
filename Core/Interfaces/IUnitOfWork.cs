@@ -6,8 +6,10 @@ namespace Core.Interfaces
     {
         public IBaseRepository<Customers> CustomerRepository { get; }
 
-        public IBaseRepository<Users> UserRepository { get; }
+        public IBaseRepository<Orders> OrdersRepository { get; }
+        public IBaseRepository<OrderDetails> OrderDetailsRepository { get; }
         public IBaseRepository<Products> ProductsRepository { get; }
         public IBaseRepository<ProductCategories> ProductCategoriesRepository { get; }
+        public IBaseRepository<Users> UserRepository { get; }
     }
 }
