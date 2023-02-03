@@ -25,7 +25,7 @@ namespace Infrastructure.Data
 
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Products> Products { get; set; }
-        public virtual DbSet<Productcategories> Productcategories { get; set; }
+        public virtual DbSet<ProductCategories> ProductCategories { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

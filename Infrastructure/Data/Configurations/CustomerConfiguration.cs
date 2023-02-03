@@ -8,7 +8,7 @@ namespace Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Customers> builder)
         {
-            builder.ToTable("customer");
+            builder.ToTable("customers");
 
             builder.Property(e => e.Id)
                 .ValueGeneratedNever()

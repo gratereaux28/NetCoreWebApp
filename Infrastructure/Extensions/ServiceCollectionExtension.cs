@@ -21,6 +21,8 @@ namespace Infrastructure.Extensions
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IProductsService, ProductsService>();
+            services.AddScoped<IProductCategoriesService, ProductCategoriesService>();
             services.AddScoped<IUserService, UserService>();
             return services;
         }

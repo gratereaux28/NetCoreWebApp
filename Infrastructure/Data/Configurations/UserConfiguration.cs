@@ -10,7 +10,7 @@ namespace Infrastructure.Data.Configurations
         {
             builder.HasKey(e => e.Username);
 
-            builder.ToTable("user");
+            builder.ToTable("users");
 
             builder.Property(e => e.Username)
                 .HasMaxLength(15)
