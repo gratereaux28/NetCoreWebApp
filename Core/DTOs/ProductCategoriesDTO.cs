@@ -4,7 +4,7 @@
 
 namespace Core.DTOs
 {
-    public partial class ProductcategoriesDTO
+    public partial class ProductCategoriesDTO
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

@@ -18,6 +18,6 @@ namespace Core.DTOs
         public double? Stock { get; set; }
         public string Location { get; set; }
         public DateTime CreateAt { get; set; }
-        public DateTime ModifiedAt { get; set; }
+        public DateTime? ModifiedAt { get; set; }
     }
 }

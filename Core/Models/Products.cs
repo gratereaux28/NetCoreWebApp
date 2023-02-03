@@ -18,7 +18,7 @@ namespace Core.Models
         public double? Stock { get; set; }
         public string Location { get; set; }
         public DateTime CreateAt { get; set; }
-        public DateTime ModifiedAt { get; set; }
+        public DateTime? ModifiedAt { get; set; }
 
         public virtual ProductCategories Category { get; set; }
     }

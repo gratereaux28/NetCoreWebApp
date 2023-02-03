@@ -9,6 +9,8 @@ namespace Infrastructure.Mappings
         public AutoMapperProfile()
         {
             CreateMap<Customers, CustomersDTO>().ReverseMap();
+            CreateMap<Products, ProductsDTO>().ReverseMap();
+            CreateMap<ProductCategories, ProductCategoriesDTO>().ReverseMap();
             CreateMap<Users, UsersDTO>().ReverseMap();
         }
     }
