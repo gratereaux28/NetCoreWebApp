@@ -6,6 +6,6 @@
 <p>3. Ejecutar el Proyecto WEB.</p>
 
 <h1>DEMO</h1>
-<p>La aplicación esta alojada en <a src="http://www.netcorewebapp.somee.com/">netcorewebapp</a> en formato de DEMO, el acceso a esta se puede realizar con las siguientes credenciales:</p>
+<p>La aplicación esta alojada en <a href="http://www.netcorewebapp.somee.com/">netcorewebapp</a> en formato de DEMO, el acceso a esta se puede realizar con las siguientes credenciales:</p>
 <p>Usuario: admin</p>
 <p>Contraseña: admin</p>
