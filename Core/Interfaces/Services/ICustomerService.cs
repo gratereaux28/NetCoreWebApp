@@ -7,10 +7,10 @@ namespace Core.Interfaces
 {
     public interface ICustomerService
     {
-        Task<Customer> GetCustomer(Guid id);
-        Task<IEnumerable<Customer>> GetCustomers();
-        Task<Customer> InsertCustomer(Customer customers);
-        Task<Customer> UpdateCustomer(Customer customers);
+        Task<Customers> GetCustomer(Guid id);
+        Task<IEnumerable<Customers>> GetCustomers();
+        Task<Customers> InsertCustomer(Customers customers);
+        Task<Customers> UpdateCustomer(Customers customers);
         Task DeleteCustomer(Guid Id);
     }
 }

@@ -52,7 +52,7 @@ namespace NetCoreWebApp.Web.Controllers
                     return View("Login", model);
                 }
 
-                User user = await _userService.GetUser(model.UserName);
+                Users user = await _userService.GetUser(model.UserName);
 
                 if (user != null && user.Password == model.Password)
                 {

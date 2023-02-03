@@ -9,8 +9,8 @@ namespace Infrastructure.Implementations
     public class UnitOfWork : IUnitOfWork
     {
         private readonly NetCoreWebAppContext _context;
-        private readonly IBaseRepository<Customer> _customerRepository;
-        private readonly IBaseRepository<User> _userRepository;
+        private readonly IBaseRepository<Customers> _customerRepository;
+        private readonly IBaseRepository<Users> _userRepository;
 
         public IConfiguration Configuration { get; }
 
@@ -20,8 +20,8 @@ namespace Infrastructure.Implementations
             Configuration = configuration;
         }
 
-        public IBaseRepository<Customer> CustomerRepository => _customerRepository ?? new BaseRepository<Customer>(_context);
-        public IBaseRepository<User> UserRepository => _userRepository ?? new BaseRepository<User>(_context);
+        public IBaseRepository<Customers> CustomerRepository => _customerRepository ?? new BaseRepository<Customers>(_context);
+        public IBaseRepository<Users> UserRepository => _userRepository ?? new BaseRepository<Users>(_context);
 
     }
 }

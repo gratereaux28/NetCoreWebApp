@@ -33,7 +33,7 @@ namespace Web.Controllers
         public async Task<IActionResult> GetAll()
         {
             var customers = await _customerService.GetCustomers();
-            var map = _mapper.Map<IEnumerable<CustomerDTO>>(customers);
+            var map = _mapper.Map<IEnumerable<CustomersDTO>>(customers);
             string result = JsonConvert.SerializeObject(map, Formatting.Indented, new JsonSerializerSettings
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
@@ -44,7 +44,7 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(string values)
         {
-            Customer customer = new Customer();
+            Customers customer = new Customers();
             JsonConvert.PopulateObject(values, customer);
 
             customer.Id= Guid.NewGuid();
@@ -60,7 +60,7 @@ namespace Web.Controllers
         [HttpPut]
         public async Task<IActionResult> Put(string values, Guid key)
         {
-            Customer customer = await _customerService.GetCustomer(key);
+            Customers customer = await _customerService.GetCustomer(key);
             JsonConvert.PopulateObject(values, customer);
 
             customer.ModifiedAt = DateTime.Now;

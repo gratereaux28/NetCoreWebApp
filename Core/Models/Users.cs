@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace Core.DTOs
+namespace Core.Models
 {
-    public partial class UserDTO
+    public partial class Users
     {
         public string Username { get; set; }
         public string Password { get; set; }

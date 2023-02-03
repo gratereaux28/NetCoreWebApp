@@ -4,8 +4,8 @@ namespace Core.Interfaces
 {
     public interface IUnitOfWork
     {
-        public IBaseRepository<Customer> CustomerRepository { get; }
+        public IBaseRepository<Customers> CustomerRepository { get; }
 
-        public IBaseRepository<User> UserRepository { get; }
+        public IBaseRepository<Users> UserRepository { get; }
     }
 }

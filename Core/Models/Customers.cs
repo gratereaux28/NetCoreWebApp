@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace Core.DTOs
+namespace Core.Models
 {
-    public partial class CustomerDTO
+    public partial class Customers
     {
         public Guid Id { get; set; }
         public string customer { get; set; }

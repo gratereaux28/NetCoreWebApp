@@ -5,6 +5,6 @@ namespace Core.Interfaces
 {
     public interface IUserService
     {
-        Task<User> GetUser(string Username);
+        Task<Users> GetUser(string Username);
     }
 }

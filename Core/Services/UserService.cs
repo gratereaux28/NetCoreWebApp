@@ -14,7 +14,7 @@ namespace Core.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<User> GetUser(string Username)
+        public async Task<Users> GetUser(string Username)
         {
             var result = await _unitOfWork.UserRepository.GetAsync(p => p.Username == Username);
             return result.FirstOrDefault();

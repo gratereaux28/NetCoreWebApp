@@ -17,25 +17,25 @@ namespace Core.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Customer> GetCustomer(Guid id)
+        public async Task<Customers> GetCustomer(Guid id)
         {
             var result = await _unitOfWork.CustomerRepository.GetAsync(p => p.Id == id);
             return result.FirstOrDefault();
         }
 
-        public async Task<IEnumerable<Customer>> GetCustomers()
+        public async Task<IEnumerable<Customers>> GetCustomers()
         {
             var result = await _unitOfWork.CustomerRepository.ListAllAsync();
             return result;
         }
 
-        public async Task<Customer> InsertCustomer(Customer customers)
+        public async Task<Customers> InsertCustomer(Customers customers)
         {
             await _unitOfWork.CustomerRepository.AddAsync(customers);
             return customers;
         }
 
-        public async Task<Customer> UpdateCustomer(Customer customers)
+        public async Task<Customers> UpdateCustomer(Customers customers)
         {
             await _unitOfWork.CustomerRepository.UpdateAsync(customers);
             return customers;
@@ -43,7 +43,7 @@ namespace Core.Services
 
         public async Task DeleteCustomer(Guid Id)
         {
-            Customer customer = await GetCustomer(Id);
+            Customers customer = await GetCustomer(Id);
             await _unitOfWork.CustomerRepository.DeleteAsync(customer);
         }
     }
