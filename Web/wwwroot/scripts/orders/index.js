@@ -262,6 +262,9 @@ $(() => {
                             const response = await fetch(`/OrderDetails/GetAll?orderID=${id}`);
                             const details = await response.json();
 
+                            if ((!details || details.length == 0) && !isNewRow)
+                                isNewRow = true;
+
                             $('<div>')
                                 .addClass('master-detail-caption')
                                 .text(`Detalle:`)
@@ -319,8 +322,6 @@ $(() => {
                                             format: 'currency',
                                             alignment: 'right',
                                             cellTemplate(container, options) {
-                                                console.log(options);
-                                                console.log(container);
                                                 container.html('$' + (options.data.Price * options.data.Quantity));
                                             },
                                         },
@@ -437,6 +438,7 @@ $(() => {
                                             row.editorOptions.onValueChanged = async function (e) {
                                                 const response = await fetch(`/Products/Get?id=${e.value}`)
                                                 const product = await response.json();
+
                                                 if (isNewRow)
                                                     await component.getCellElement(row.row.rowIndex, 'Price').find(".dx-texteditor").dxTextBox("instance").option("value", product.Price);
                                                 else
